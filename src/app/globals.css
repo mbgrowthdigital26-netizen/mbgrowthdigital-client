@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 @theme {
+  --color-green-50: #f0fbf6;
+  --color-green-100: #dcf5eb;
+  --color-green-200: #bdebd9;
+  --color-green-300: #91dcc0;
+  --color-green-400: #009966;
+  --color-green-500: #008a5c;
+  --color-green-600: #00734d;
+  --color-green-700: #005c3d;
+  --color-green-800: #00452e;
+  --color-green-900: #002e1f;
+  --color-green-950: #00170f;
+
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
 
-  --color-primary: #059669;
-  --color-primary-dark: #047857;
-  --color-secondary: #10b981;
-  --color-accent: #34d399;
+  --color-primary: #009966;
+  --color-primary-dark: #00734d;
+  --color-secondary: #00b377;
+  --color-accent: #00cc88;
   
   --color-background: #ffffff;
   --color-foreground: #0f172a;
@@ -18,7 +30,7 @@
   --color-card: #ffffff;
   --color-card-foreground: #0f172a;
   
-  --color-border: rgba(16, 185, 129, 0.15);
+  --color-border: rgba(0, 153, 102, 0.15);
 }
 
 @layer base {
@@ -32,24 +44,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 161 94% 30%; /* #059669 */
+    --primary: 160 100% 30%; /* #4ade80 */
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 160 84% 39%; /* #10b981 */
+    --secondary: 160 100% 35%; /* #86efac */
     --secondary-foreground: 210 40% 98%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 158 64% 52%; /* #34d399 */
+    --accent: 160 100% 40%; /* #bbf7d0 */
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 161 94% 30% / 0.15;
+    --border: 160 100% 30% / 0.15;
     --input: 214.3 31.8% 91.4%;
-    --ring: 161 94% 30%;
+    --ring: 160 100% 30%;
  
     --radius: 0.5rem;
   }
@@ -74,7 +86,7 @@
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(0, 153, 102, 0.1);
 }
 
 @utility animate-glow {
@@ -83,9 +95,9 @@
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px -5px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 0 10px -5px rgba(0, 153, 102, 0.3);
   }
   to {
-    box-shadow: 0 0 25px 5px rgba(5, 150, 105, 0.4);
+    box-shadow: 0 0 25px 5px rgba(0, 153, 102, 0.4);
   }
 }

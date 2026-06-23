@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 
 export function Footer() {
+  const [logoError, setLogoError] = useState(false);
   return (
     <footer className="bg-white pt-20 pb-10 border-t border-slate-200">
       <div className="container mx-auto px-6">
@@ -11,9 +15,18 @@ export function Footer() {
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group inline-block">
               <div className="flex items-center gap-2">
-                <Image src="/logo.png" alt="M.B Growth Digital Logo" width={40} height={40} className="w-10 h-auto group-hover:scale-105 transition-transform duration-300" />
+                {!logoError && (
+                  <Image 
+                    src="/logo.png" 
+                    alt="Growth Digital Logo" 
+                    width={40} 
+                    height={40} 
+                    className="w-10 h-auto group-hover:scale-105 transition-transform duration-300" 
+                    onError={() => setLogoError(true)}
+                  />
+                )}
                 <span className="font-heading font-bold text-2xl text-slate-900 tracking-tight">
-                  M.B Growth <span className="text-emerald-500">Digital</span>
+                  {logoError ? "M.B Growth " : "Growth "}<span className="text-green-500">Digital</span>
                 </span>
               </div>
             </Link>
@@ -21,10 +34,10 @@ export function Footer() {
               Helping Businesses Grow. Empowering Future Professionals. Premium digital marketing and internship solutions based in Chennai.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 font-bold text-sm">FB</a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 font-bold text-sm">IG</a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 font-bold text-sm">IN</a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 font-bold text-sm">X</a>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-slate-900 transition-all duration-300 font-bold text-sm">FB</a>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-slate-900 transition-all duration-300 font-bold text-sm">IG</a>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-slate-900 transition-all duration-300 font-bold text-sm">IN</a>
+              <a href="#" className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-green-600 hover:text-slate-900 transition-all duration-300 font-bold text-sm">X</a>
             </div>
           </div>
 
@@ -57,17 +70,17 @@ export function Footer() {
             <h4 className="text-slate-900 font-heading font-semibold text-lg mb-6">Contact Us</h4>
             <ul className="space-y-4 text-slate-600">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-emerald-500 shrink-0 mt-1" />
+                <MapPin className="w-5 h-5 text-green-500 shrink-0 mt-1" />
                 <span>No 7/16, MGR Nagar, Mangadu, Chennai, Tamil Nadu 600 122, India</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-emerald-500 shrink-0" />
-                <a href="mailto:mbgrowthdigital26@gmail.com" className="hover:text-emerald-400 transition-colors">
+                <Mail className="w-5 h-5 text-green-500 shrink-0" />
+                <a href="mailto:mbgrowthdigital26@gmail.com" className="hover:text-green-400 transition-colors">
                   mbgrowthdigital26@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-emerald-500 shrink-0" />
+                <Phone className="w-5 h-5 text-green-500 shrink-0" />
                 <span>+91 86101 66708</span>
               </li>
             </ul>
@@ -75,7 +88,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-600">
           <p>&copy; {new Date().getFullYear()} M.B Growth Digital. All Rights Reserved.</p>
           <p>Designed for Digital Excellence & Practical Learning</p>
         </div>
@@ -89,7 +102,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     <li>
       <Link
         href={href}
-        className="text-slate-600 hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+        className="text-slate-600 hover:text-green-400 transition-colors flex items-center gap-2 group"
       >
         <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
         {children}

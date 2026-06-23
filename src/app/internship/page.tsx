@@ -51,14 +51,14 @@ export default function Internship() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-emerald-50 to-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-100/60 to-transparent pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10">
-          <Reveal>
-            <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Build Your Career</span>
+      <section className="pt-32 pb-20 bg-gradient-to-br from-green-50 to-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-green-100/60 to-transparent pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+          <Reveal width="100%">
+            <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Build Your Career</span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-900 mb-6">Internship Opportunities</h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal width="100%" delay={0.1}>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
               At M.B Growth Digital, we provide practical internship programs designed to help students gain industry experience and develop professional skills.
             </p>
@@ -82,15 +82,15 @@ export default function Internship() {
               { icon: Palette, title: "Graphic Design", desc: "Develop visual asset suites for brands. Learn core styling techniques, color theory, layout grids, branding identities, and layout tools.", tags: ["UI Layouts", "Brand Creatives", "Vector Graphics"] },
             ].map((program, index) => (
               <Reveal key={program.title} delay={index * 0.1} className="h-full">
-                <div className="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:border-emerald-200 hover:bg-emerald-50/50 transition-colors h-full flex flex-col group">
-                  <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <div className="bg-slate-50 border border-slate-200 p-8 rounded-3xl hover:border-green-300 hover:bg-green-50/50 transition-colors h-full flex flex-col group">
+                  <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-slate-900 transition-colors">
                     <program.icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-2xl font-heading font-bold text-slate-900 mb-4">{program.title}</h3>
                   <p className="text-slate-600 mb-6 flex-grow leading-relaxed">{program.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {program.tags.map(tag => (
-                      <span key={tag} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white text-emerald-700 border border-emerald-100">
+                      <span key={tag} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white text-green-700 border border-green-200">
                         {tag}
                       </span>
                     ))}
@@ -101,8 +101,8 @@ export default function Internship() {
           </div>
 
           <Reveal delay={0.4}>
-            <div className="mt-16 bg-emerald-50 border border-emerald-100 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0">
+            <div className="mt-16 bg-green-50 border border-green-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6">
+              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
@@ -118,7 +118,7 @@ export default function Internship() {
 
       {/* Benefits */}
       <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-600/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-green-600/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <SectionHeader 
             label="What We Offer"
@@ -135,8 +135,8 @@ export default function Internship() {
               { icon: Network, title: "Career Support", desc: "Get access to CV reviews, LinkedIn optimization tricks, and job placement guidance from agency experts." },
             ].map((benefit, index) => (
               <Reveal key={benefit.title} delay={index * 0.1}>
-                <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200 hover:border-emerald-500/50 transition-colors h-full">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6">
+                <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200 hover:border-green-500/50 transition-colors h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
                     <benefit.icon className="w-8 h-8" />
                   </div>
                   <h4 className="text-xl font-heading font-bold text-slate-900 mb-4">{benefit.title}</h4>
@@ -155,7 +155,7 @@ export default function Internship() {
             
             <div className="order-2 lg:order-1">
               <Reveal>
-                <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Join Our Cohort</span>
+                <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Join Our Cohort</span>
                 <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6">How To Apply?</h2>
                 <p className="text-slate-600 text-lg mb-12 leading-relaxed">
                   Applying is straightforward. Fill out the application form, specifying your educational details and desired program.
@@ -170,7 +170,7 @@ export default function Internship() {
                 ].map((step, index) => (
                   <Reveal key={step.num} delay={index * 0.1}>
                     <div className="flex gap-6">
-                      <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shrink-0 font-heading font-bold text-xl">
+                      <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0 font-heading font-bold text-xl">
                         {step.num}
                       </div>
                       <div>
@@ -185,7 +185,7 @@ export default function Internship() {
 
             <div className="order-1 lg:order-2">
               <Reveal delay={0.2}>
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
+                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-200">
                   <h3 className="text-2xl font-heading font-bold text-slate-900 mb-8">Apply for Internship</h3>
                   
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -193,7 +193,7 @@ export default function Internship() {
                       <label className="block text-sm font-semibold text-slate-900 mb-2">Full Name</label>
                       <input 
                         {...register("name")} 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors" 
                         placeholder="Your Name" 
                       />
                       {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
@@ -204,7 +204,7 @@ export default function Internship() {
                       <input 
                         {...register("email")} 
                         type="email" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors" 
                         placeholder="name@domain.com" 
                       />
                       {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
@@ -215,7 +215,7 @@ export default function Internship() {
                       <input 
                         {...register("phone")} 
                         type="tel" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors" 
                         placeholder="e.g. +91 98765 43210" 
                       />
                       {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
@@ -225,7 +225,7 @@ export default function Internship() {
                       <label className="block text-sm font-semibold text-slate-900 mb-2">Preferred Program</label>
                       <select 
                         {...register("program")} 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors"
                       >
                         <option value="">Select an internship program</option>
                         <option value="digital-marketing">Digital Marketing</option>
@@ -240,7 +240,7 @@ export default function Internship() {
                       <textarea 
                         {...register("message")} 
                         rows={4}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors resize-none" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors resize-none" 
                         placeholder="Briefly describe your educational background and goals..." 
                       />
                       {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
@@ -253,7 +253,7 @@ export default function Internship() {
                     </Button>
 
                     {submitStatus === "success" && (
-                      <div className="p-4 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-sm font-medium text-center">
+                      <div className="p-4 rounded-xl bg-green-50 text-green-700 border border-green-300 text-sm font-medium text-center">
                         Application submitted successfully! Our team will review your application and reach out to you via email/phone.
                       </div>
                     )}
