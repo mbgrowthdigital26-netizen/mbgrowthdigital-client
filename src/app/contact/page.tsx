@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { MapPin, Mail, Phone, Loader2, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Loader2, Send, CheckCircle2, XCircle } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 
@@ -52,13 +52,13 @@ export default function Contact() {
       <section className="pt-32 pb-20 bg-gradient-to-br from-green-50 to-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-green-100/60 to-transparent pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-          <Reveal width="100%">
+          <Reveal width="100%" direction="blur">
             <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Get In Touch</span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-900 mb-6">Contact Us</h1>
           </Reveal>
           <Reveal width="100%" delay={0.1}>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Have a question about our marketing services or available internship programs? Send us a message and we'll reply shortly.
+              Have a question about our marketing services or available internship programs? Send us a message and we&apos;ll reply shortly.
             </p>
           </Reveal>
         </div>
@@ -71,7 +71,7 @@ export default function Contact() {
 
             {/* Info Col */}
             <div className="lg:col-span-5">
-              <Reveal>
+              <Reveal direction="left">
                 <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Company Information</span>
                 <h2 className="text-4xl font-heading font-bold text-slate-900 mb-6">M.B Growth Digital</h2>
                 <p className="text-slate-600 text-lg mb-12 leading-relaxed">
@@ -80,7 +80,7 @@ export default function Contact() {
               </Reveal>
 
               <div className="space-y-8 mb-12">
-                <Reveal delay={0.1}>
+                <Reveal delay={0.1} direction="left">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shrink-0">
                       <MapPin className="w-6 h-6" />
@@ -92,7 +92,7 @@ export default function Contact() {
                   </div>
                 </Reveal>
 
-                <Reveal delay={0.2}>
+                <Reveal delay={0.2} direction="left">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shrink-0">
                       <Mail className="w-6 h-6" />
@@ -106,21 +106,21 @@ export default function Contact() {
                   </div>
                 </Reveal>
 
-                <Reveal delay={0.3}>
+                <Reveal delay={0.3} direction="left">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shrink-0">
                       <Phone className="w-6 h-6" />
                     </div>
                     <div>
                       <h4 className="text-lg font-heading font-bold text-slate-900 mb-1">Phone Number</h4>
-                      <p className="text-slate-600">+91 86101 66708</p>
+                      <a href="tel:+918610166708" className="text-slate-600 hover:text-green-600 transition-colors">+91 86101 66708</a>
                     </div>
                   </div>
                 </Reveal>
               </div>
 
               {/* Map */}
-              <Reveal delay={0.4}>
+              <Reveal delay={0.4} direction="scale">
                 <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-200">
                   <iframe
                     title="M.B Growth Digital Location - Mangadu, Chennai"
@@ -138,7 +138,7 @@ export default function Contact() {
 
             {/* Form Col */}
             <div className="lg:col-span-7">
-              <Reveal delay={0.2}>
+              <Reveal delay={0.2} direction="right">
                 <div className="bg-white rounded-3xl p-8 sm:p-10 lg:p-12 xl:p-14 shadow-2xl shadow-slate-200/50 border border-slate-200">
                   <h3 className="text-2xl font-heading font-bold text-slate-900 mb-8">Send Us a Message</h3>
                   
@@ -197,13 +197,15 @@ export default function Contact() {
                     </Button>
 
                     {submitStatus === "success" && (
-                      <div className="p-4 rounded-xl bg-green-50 text-green-700 border border-green-300 text-sm font-medium text-center">
-                        ✅ Thank you! Your message has been sent successfully. We will get back to you soon.
+                      <div className="p-4 rounded-xl bg-green-50 text-green-700 border border-green-300 text-sm font-medium text-center flex items-center justify-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-green-600" />
+                        Thank you! Your message has been sent successfully. We will get back to you soon.
                       </div>
                     )}
                     {submitStatus === "error" && (
-                      <div className="p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 text-sm font-medium text-center">
-                        ❌ Failed to send message. Please try again later.
+                      <div className="p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 text-sm font-medium text-center flex items-center justify-center gap-2">
+                        <XCircle className="w-5 h-5 text-red-600" />
+                        Failed to send message. Please try again later.
                       </div>
                     )}
                   </form>

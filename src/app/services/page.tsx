@@ -1,4 +1,11 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Digital Marketing, SEO & Web Development Services | Chennai",
+  description: "Boost your business with our tailored services: SEO, Google Ads, Content Marketing, Web & App Development, and Graphic Design in Chennai, Tamil Nadu.",
+};
+
 import { 
   Share2, Search, Target, Laptop, Palette, 
   Smartphone, ArrowRight, TrendingUp, ShoppingCart, GraduationCap, Mail
@@ -176,7 +183,7 @@ export default function Services() {
                   Accelerate Your Business Growth Today
                 </h3>
                 <p className="text-green-50 text-lg md:text-xl mb-10 leading-relaxed font-medium">
-                  Contact our digital marketing consultants for a complete, zero-cost analysis of your brand's current online footprint and a tailored strategy proposal.
+                  Contact our digital marketing consultants for a complete, zero-cost analysis of your brand&apos;s current online footprint and a tailored strategy proposal.
                 </p>
                 <Button size="lg" variant="secondary" className="h-14 px-8 text-lg bg-white text-green-700 hover:bg-slate-50 border-none shadow-xl shadow-black/10" asChild>
                   <Link href="/contact">

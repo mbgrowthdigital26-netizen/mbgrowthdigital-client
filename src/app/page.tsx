@@ -3,6 +3,8 @@ import { ArrowRight, GraduationCap, Share2, Search, Target, Laptop, Palette, Cha
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
+import { StaggerReveal, StaggerItem } from "@/components/shared/StaggerReveal";
+import { ParallaxReveal } from "@/components/shared/ParallaxReveal";
 
 const services = [
   { icon: TrendingUp, title: "Digital Marketing", desc: "Data-driven digital strategies that expand your online presence and drive measurable business growth." },
@@ -27,39 +29,38 @@ export default function Home() {
         <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-teal-100/40 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10 flex flex-col justify-center items-center text-center min-h-[80vh]">
-          <Reveal delay={0.1} width="100%">
+          <Reveal delay={0} width="100%" direction="up">
             <span className="inline-block py-1.5 px-5 rounded-full bg-transparent text-green-600 font-semibold text-sm tracking-widest uppercase mb-6">
               Growth & Learning Ecosystem
             </span>
           </Reveal>
 
-          <Reveal delay={0.2} width="100%">
+          <Reveal delay={0.12} width="100%" direction="up">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-slate-900 tracking-tight mb-6 leading-none">
               Growth <span className="text-green-600">Digital</span>
             </h1>
           </Reveal>
-
-          <Reveal delay={0.3} width="100%">
+          <Reveal delay={0.24} width="100%" direction="up">
             <p className="text-xl md:text-2xl font-heading font-bold mb-8 bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
               Digital Marketing & Internship Solutions
             </p>
           </Reveal>
 
-          <Reveal delay={0.4} width="100%">
+          <Reveal delay={0.36} width="100%" direction="up">
             <p className="max-w-2xl mx-auto text-lg text-slate-600 mb-10 leading-relaxed text-center">
-              M.B Growth Digital is a Chennai-based Digital Marketing and Internship Solutions company. We understand our clients' needs and provide customized solutions that help their businesses grow online.            </p>
+              M.B Growth Digital is a Chennai-based Digital Marketing and Internship Solutions company. We understand our clients&apos; needs and provide customized solutions that help their businesses grow online.            </p>
           </Reveal>
 
-          <Reveal delay={0.5} width="100%">
+          <Reveal delay={0.48} width="100%" direction="scale">
             <div className="flex flex-row justify-center items-center gap-4 flex-wrap">
-              <Button size="lg" asChild className="rounded-full w-full sm:w-auto h-14 text-base px-10 bg-green-600 hover:bg-green-700 shadow-lg shadow-green-900/10">
+              <Button size="lg" asChild className="rounded-full w-full sm:w-auto h-14 text-base px-10 bg-green-600 hover:bg-green-700 hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-green-900/10 group focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
                 <Link href="/services">
-                  Our Services <ArrowRight className="ml-2 w-5 h-5" />
+                  Our Services <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="rounded-full w-full sm:w-auto h-14 text-base px-10 border-2 border-slate-300 text-slate-700 hover:border-green-400 hover:text-green-700 hover:bg-green-50 bg-white">
+              <Button size="lg" variant="outline" asChild className="rounded-full w-full sm:w-auto h-14 text-base px-10 border-2 border-slate-300 text-slate-700 hover:border-green-400 hover:text-green-700 hover:bg-green-50 bg-white hover:scale-[1.02] active:scale-95 transition-all group focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2">
                 <Link href="/internship">
-                  Apply Internship <GraduationCap className="ml-2 w-5 h-5" />
+                  Apply Internship <GraduationCap className="ml-2 w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </div>
@@ -72,13 +73,13 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-              <Reveal width="100%">
+              <Reveal width="100%" direction="left">
                 <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Who We Are</span>
                 <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6">Empowering Brands & Nurturing Talents</h2>
               </Reveal>
-              <Reveal width="100%" delay={0.1}>
+              <Reveal width="100%" delay={0.1} direction="left">
                 <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                  M.B Growth Digital is a digital marketing and internship solutions company based in Chennai. We focus on understanding our clients' needs, goals, and expectations before starting any project. Our priority is to provide solutions that satisfy our clients and help their businesses grow successfully in the digital world.                </p>
+                  M.B Growth Digital is a digital marketing and internship solutions company based in Chennai. We focus on understanding our clients&apos; needs, goals, and expectations before starting any project. Our priority is to provide solutions that satisfy our clients and help their businesses grow successfully in the digital world.                </p>
                 <p className="text-slate-600 text-lg mb-6 leading-relaxed">
                   We offer a wide range of services including Digital Marketing, Search Engine Optimization (SEO), Google Ads, Social Media Marketing, Content Marketing, Website Development, Web Application Development, Mobile App Development, and E-Commerce Development.
                 </p>
@@ -86,7 +87,7 @@ export default function Home() {
                   We also provide valuable internship opportunities for students to gain real-world experience, develop practical skills, and build their careers in the digital industry.
                 </p>
               </Reveal>
-              <Reveal width="100%" delay={0.2}>
+              <Reveal width="100%" delay={0.2} direction="up">
                 <Button variant="secondary" asChild className="mt-4">
                   <Link href="/about">Learn More About Us</Link>
                 </Button>
@@ -94,21 +95,91 @@ export default function Home() {
             </div>
 
             <div className="relative flex justify-center lg:justify-end">
-              <Reveal delay={0.3}>
-                <div className="relative w-72 h-72 md:w-96 md:h-96">
-                  {/* Animated Morphing Blob */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-green-400 to-teal-500 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-[morphing_15s_infinite_alternate_ease-in-out] shadow-2xl shadow-green-500/20" />
-                  <div className="absolute inset-2 border-2 border-white/50 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-[morphing_15s_infinite_alternate_ease-in-out] delay-[-3s]" />
+              <Reveal delay={0.3} direction="scale">
+                <ParallaxReveal speed={0.2}>
+                  <div className="relative w-72 h-72 md:w-96 md:h-96">
+                    {/* Animated Morphing Blob */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-green-400 to-teal-500 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-[morphing_15s_infinite_alternate_ease-in-out] shadow-2xl shadow-green-500/20" />
+                    <div className="absolute inset-2 border-2 border-white/50 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-[morphing_15s_infinite_alternate_ease-in-out] delay-[-3s]" />
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-900 z-10">
-                    <span className="text-6xl md:text-8xl font-heading font-bold">100%</span>
-                    <span className="text-xl md:text-2xl font-semibold uppercase tracking-widest mt-2">Practical</span>
-                    <span className="text-lg md:text-xl opacity-90">Learning</span>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-900 z-10">
+                      <span className="text-6xl md:text-8xl font-heading font-bold">100%</span>
+                      <span className="text-xl md:text-2xl font-semibold uppercase tracking-widest mt-2">Practical</span>
+                      <span className="text-lg md:text-xl opacity-90">Learning</span>
+                    </div>
                   </div>
-                </div>
+                </ParallaxReveal>
               </Reveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-6">
+          <SectionHeader
+            label="Featured Projects"
+            title="A selection of websites and digital experiences built by M.B Growth Digital."
+            description=""
+          />
+
+          <StaggerReveal className="max-w-5xl mx-auto" staggerDelay={0.1}>
+            <StaggerItem direction="up">
+              <div className="group bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="relative h-64 md:h-auto bg-slate-100 overflow-hidden">
+                    <img
+                      src="/projects/heaven-incarnate-logo.png"
+                      alt="Heaven Incarnate Tours & Travels project"
+                      className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-xs font-bold tracking-widest text-green-600 uppercase bg-green-50 px-2.5 py-1 rounded-md border border-green-200">
+                        Travel & Tourism
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-900 mb-4">
+                      Heaven Incarnate Tours & Travels
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      A modern, responsive travel agency website developed for Heaven Incarnate Tours & Travels, with a focus on user experience, search visibility, performance, and mobile responsiveness.
+                    </p>
+                    <div className="mb-8">
+                      <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-3">Services</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["Website Development", "SEO", "Technical SEO", "Responsive Design", "Performance Optimization"].map((s) => (
+                          <span key={s} className="px-3 py-1.5 bg-white text-slate-700 text-xs font-medium rounded-full border border-slate-200">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-4">
+                      <Button asChild className="rounded-full shadow-md shadow-green-900/10 hover:shadow-lg transition-all group/btn">
+                        <Link href="/projects/heaven-incarnate-tours">
+                          View Case Study <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                      <Button variant="outline" asChild className="rounded-full border-slate-300 text-slate-700 hover:text-green-700 hover:bg-green-50 transition-all">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                          Visit Website
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </StaggerItem>
+            
+            <StaggerItem direction="up" className="mt-12 text-center">
+              <Button variant="outline" asChild className="rounded-full border-slate-300">
+                <Link href="/projects">View All Projects</Link>
+              </Button>
+            </StaggerItem>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -121,9 +192,9 @@ export default function Home() {
             description="Tailored digital strategies engineered to expand your digital footprint, connect with targeted audiences, and scale your conversions."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Reveal key={service.title} delay={0.1 * index} className="h-full">
+          <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.08}>
+            {services.map((service) => (
+              <StaggerItem key={service.title} className="h-full">
                 <div className="group h-full bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500 ease-out" />
                   <div className="relative z-10">
@@ -134,10 +205,10 @@ export default function Home() {
                     <p className="text-slate-600">{service.desc}</p>
                   </div>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
 
-            <Reveal delay={1.1} className="h-full">
+            <StaggerItem className="h-full" direction="scale">
               <div className="h-full bg-green-50 rounded-2xl p-8 border-2 border-dashed border-green-300 flex flex-col items-center justify-center text-center">
                 <h3 className="text-xl font-heading font-bold text-slate-900 mb-3">Ready to Grow?</h3>
                 <p className="text-slate-600 mb-6">Explore our full suite of digital solutions and find the perfect fit for your business goals.</p>
@@ -145,8 +216,8 @@ export default function Home() {
                   <Link href="/services">View All Services</Link>
                 </Button>
               </div>
-            </Reveal>
-          </div>
+            </StaggerItem>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -162,13 +233,13 @@ export default function Home() {
             description="Gain real-world experience, acquire industry-ready technical skills, and work under professional mentors on live client projects."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" staggerDelay={0.12}>
             {[
               { icon: ChartLine, title: "Digital Marketing", desc: "Master SEO, SMM, content planning, and paid ads.", tags: ["SEO", "SMM", "Google Ads"] },
               { icon: Laptop, title: "Web Development", desc: "Build real websites using modern coding tech stacks.", tags: ["Frontend", "UI/UX", "Live Projects"] },
               { icon: Palette, title: "Graphic Design", desc: "Learn layout systems, vectors, and visual storytelling.", tags: ["Photoshop", "Illustrator", "Branding"] },
-            ].map((program, index) => (
-              <Reveal key={program.title} delay={0.1 * index}>
+            ].map((program) => (
+              <StaggerItem key={program.title} direction="up">
                 <div className="bg-white border border-green-200 p-8 rounded-2xl hover:border-green-400 hover:shadow-lg transition-all h-full flex flex-col">
                   <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6">
                     <program.icon className="w-6 h-6" />
@@ -186,9 +257,9 @@ export default function Home() {
                     <Link href="/internship">Program Info</Link>
                   </Button>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
     </>

@@ -12,7 +12,7 @@ interface SectionHeaderProps {
 export function SectionHeader({ label, title, description, centered = true, className }: SectionHeaderProps) {
   return (
     <div className={cn("max-w-3xl mb-16", centered ? "mx-auto text-center" : "", className)}>
-      <Reveal width="100%">
+      <Reveal width="100%" direction="blur">
         <span className="inline-block py-1 px-3 rounded-full bg-green-50 text-green-600 font-semibold text-sm tracking-wider uppercase mb-4 border border-green-200">
           {label}
         </span>

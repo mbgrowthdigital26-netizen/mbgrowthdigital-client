@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://mbgrowthdigital.com/sitemap.xml',
+    sitemap: 'https://mbgrowthdigital.in/sitemap.xml',
   };
 }

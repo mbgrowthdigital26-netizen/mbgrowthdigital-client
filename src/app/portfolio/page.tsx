@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
+import { StaggerReveal, StaggerItem } from "@/components/shared/StaggerReveal";
 
 const projects = [
   {
@@ -18,7 +19,8 @@ const projects = [
     stats: [{ val: "+140%", lbl: "Conversion" }, { val: "1.8s", lbl: "Load Time" }],
     icon: ShoppingCart,
     color: "from-teal-200 to-green-100",
-    iconColor: "text-green-600"
+    iconColor: "text-green-600",
+    isDemoProject: true,
   },
   {
     id: 2,
@@ -29,7 +31,8 @@ const projects = [
     stats: [{ val: "2.5k+", lbl: "Leads Gen" }, { val: "-35%", lbl: "CPL Reduction" }],
     icon: TrendingUp,
     color: "from-purple-200 to-green-100",
-    iconColor: "text-purple-600"
+    iconColor: "text-purple-600",
+    isDemoProject: true,
   },
   {
     id: 3,
@@ -40,7 +43,8 @@ const projects = [
     stats: [{ val: "100%", lbl: "Custom Icons" }, { val: "30+", lbl: "Assets Delivered" }],
     icon: PenTool,
     color: "from-indigo-200 to-teal-100",
-    iconColor: "text-indigo-600"
+    iconColor: "text-indigo-600",
+    isDemoProject: true,
   },
   {
     id: 4,
@@ -51,7 +55,8 @@ const projects = [
     stats: [{ val: "50k+", lbl: "Active Users" }, { val: "99.9%", lbl: "Uptime" }],
     icon: GraduationCap,
     color: "from-green-200 to-teal-100",
-    iconColor: "text-green-600"
+    iconColor: "text-green-600",
+    isDemoProject: true,
   },
   {
     id: 5,
@@ -62,7 +67,8 @@ const projects = [
     stats: [{ val: "1.2M", lbl: "Campaign Reach" }, { val: "+85%", lbl: "Bookings Growth" }],
     icon: Megaphone,
     color: "from-green-300 to-teal-200",
-    iconColor: "text-green-700"
+    iconColor: "text-green-700",
+    isDemoProject: true,
   },
   {
     id: 6,
@@ -73,7 +79,8 @@ const projects = [
     stats: [{ val: "100%", lbl: "Vector Grid" }, { val: "SVG", lbl: "Ready Formats" }],
     icon: Palette,
     color: "from-teal-300 to-green-100",
-    iconColor: "text-teal-700"
+    iconColor: "text-teal-700",
+    isDemoProject: true,
   }
 ];
 
@@ -129,45 +136,61 @@ export default function Portfolio() {
           </Reveal>
 
           {/* Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
             <AnimatePresence>
               {filteredProjects.map((project) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={project.id}
-                  className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 group hover:shadow-xl transition-all"
-                >
-                  <div className={`h-64 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden`}>
-                    <project.icon className={`w-24 h-24 ${project.iconColor} opacity-80 group-hover:scale-110 transition-transform duration-500`} />
-                    <div className="absolute inset-0 bg-green-100 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                      <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-green-600 transform scale-0 group-hover:scale-100 transition-transform delay-100">
-                        <ExternalLink className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="p-8 text-center">
-                    <span className="text-green-600 font-semibold text-sm mb-2 block">{project.categoryLabel}</span>
-                    <h3 className="text-2xl font-heading font-bold text-slate-900 mb-3">{project.title}</h3>
-                    <p className="text-slate-600 mb-6 leading-relaxed text-sm">
-                      {project.desc}
-                    </p>
-                    <div className="flex items-center justify-center gap-6 pt-6 border-t border-slate-200">
-                      {project.stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                          <div className="text-lg font-bold text-slate-900">{stat.val}</div>
-                          <div className="text-xs text-slate-600 font-medium uppercase tracking-wider">{stat.lbl}</div>
+                <StaggerItem key={project.id} className="h-full" direction="up">
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 group hover:shadow-xl transition-all h-full flex flex-col"
+                  >
+                    <div className={`h-64 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden`}>
+                      {/* Image subtle scale from 1.05 to 1 on reveal, then hover scale */}
+                      <motion.div
+                        initial={{ scale: 1.05 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="w-full h-full flex items-center justify-center"
+                      >
+                        <project.icon className={`w-24 h-24 ${project.iconColor} opacity-80 group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-500`} />
+                      </motion.div>
+                      {project.isDemoProject && (
+                        <div className="absolute top-3 left-3">
+                          <span className="bg-amber-100 text-amber-700 border border-amber-300 text-xs font-semibold px-3 py-1 rounded-full">
+                            Demo Project
+                          </span>
                         </div>
-                      ))}
+                      )}
+                      <div className="absolute inset-0 bg-green-100 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-green-600 transform scale-0 group-hover:scale-100 transition-transform delay-100 group-hover:translate-x-1 group-hover:-translate-y-1">
+                          <ExternalLink className="w-5 h-5" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                    <div className="p-8 text-center flex-1 flex flex-col">
+                      <span className="text-green-600 font-semibold text-sm mb-2 block">{project.categoryLabel}</span>
+                      <h3 className="text-2xl font-heading font-bold text-slate-900 mb-3">{project.title}</h3>
+                      <p className="text-slate-600 mb-6 leading-relaxed text-sm flex-1">
+                        {project.desc}
+                      </p>
+                      <div className="flex items-center justify-center gap-6 pt-6 border-t border-slate-200">
+                        {project.stats.map((stat, i) => (
+                          <div key={i} className="text-center">
+                            <div className="text-lg font-bold text-slate-900">{stat.val}</div>
+                            <div className="text-xs text-slate-600 font-medium uppercase tracking-wider">{stat.lbl}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
               ))}
             </AnimatePresence>
-          </motion.div>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -180,7 +203,7 @@ export default function Portfolio() {
               
               <div className="relative z-10 max-w-3xl mx-auto">
                 <h3 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6 tracking-tight">
-                  Let's Build Something Awesome
+                  Let&apos;s Build Something Awesome
                 </h3>
                 <p className="text-green-50 text-lg md:text-xl mb-10 leading-relaxed font-medium">
                   Ready to elevate your online search exposure or build custom software designs? Our digital experts are ready to begin.

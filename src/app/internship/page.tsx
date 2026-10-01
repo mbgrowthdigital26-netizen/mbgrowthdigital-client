@@ -8,6 +8,7 @@ import { Megaphone, Laptop, Palette, CheckCircle2, BookOpen, Code, Medal, Networ
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
+import { StaggerReveal, StaggerItem } from "@/components/shared/StaggerReveal";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -54,7 +55,7 @@ export default function Internship() {
       <section className="pt-32 pb-20 bg-gradient-to-br from-green-50 to-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-green-100/60 to-transparent pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-          <Reveal width="100%">
+          <Reveal width="100%" direction="blur">
             <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Build Your Career</span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-slate-900 mb-6">Internship Opportunities</h1>
           </Reveal>
@@ -75,13 +76,13 @@ export default function Internship() {
             description="Select a pathway that matches your career aspirations. Each program features rigorous mentorship, weekly code/strategy reviews, and client deliverables."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.12}>
             {[
               { icon: Megaphone, title: "Digital Marketing", desc: "Dive deep into client growth funnels. You will learn and implement SEO, SMM, Content Marketing, and paid search advertising.", tags: ["Analytics", "Content Strategy", "SEO Audit"] },
               { icon: Laptop, title: "Web Development", desc: "Gain concrete developer experience. Work on building, testing, and debugging responsive websites and database-backed web applications.", tags: ["HTML/CSS/JS", "Responsive Designs", "Git & Deployment"] },
               { icon: Palette, title: "Graphic Design", desc: "Develop visual asset suites for brands. Learn core styling techniques, color theory, layout grids, branding identities, and layout tools.", tags: ["UI Layouts", "Brand Creatives", "Vector Graphics"] },
-            ].map((program, index) => (
-              <Reveal key={program.title} delay={index * 0.1} className="h-full">
+            ].map((program) => (
+              <StaggerItem key={program.title} className="h-full">
                 <div className="bg-slate-50 border border-slate-200 p-8 rounded-3xl hover:border-green-300 hover:bg-green-50/50 transition-colors h-full flex flex-col group">
                   <div className="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-slate-900 transition-colors">
                     <program.icon className="w-7 h-7" />
@@ -96,11 +97,11 @@ export default function Internship() {
                     ))}
                   </div>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerReveal>
 
-          <Reveal delay={0.4}>
+          <Reveal delay={0.4} direction="scale">
             <div className="mt-16 bg-green-50 border border-green-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6">
               <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-8 h-8" />
@@ -127,14 +128,14 @@ export default function Internship() {
             className="text-slate-600 [&>h2]:text-slate-900"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
             {[
               { icon: BookOpen, title: "Practical Learning", desc: "Move away from abstract theory. We focus heavily on practical training, tools usage, and industry workflows." },
               { icon: Code, title: "Real Projects", desc: "Contribute to actual commercial client accounts, and build components that launch live to the public." },
               { icon: Medal, title: "Certificate", desc: "Earn a verified Internship Completion Certificate reflecting your program duration, achievements, and core skills." },
               { icon: Network, title: "Career Support", desc: "Get access to CV reviews, LinkedIn optimization tricks, and job placement guidance from agency experts." },
-            ].map((benefit, index) => (
-              <Reveal key={benefit.title} delay={index * 0.1}>
+            ].map((benefit) => (
+              <StaggerItem key={benefit.title} direction="scale">
                 <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200 hover:border-green-500/50 transition-colors h-full flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
                     <benefit.icon className="w-8 h-8" />
@@ -142,9 +143,9 @@ export default function Internship() {
                   <h4 className="text-xl font-heading font-bold text-slate-900 mb-4">{benefit.title}</h4>
                   <p className="text-slate-600 leading-relaxed text-sm">{benefit.desc}</p>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
@@ -154,7 +155,7 @@ export default function Internship() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             <div className="order-2 lg:order-1">
-              <Reveal>
+              <Reveal direction="left">
                 <span className="text-green-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Join Our Cohort</span>
                 <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6">How To Apply?</h2>
                 <p className="text-slate-600 text-lg mb-12 leading-relaxed">
@@ -168,7 +169,7 @@ export default function Internship() {
                   { num: "2", title: "Interview Call", desc: "Our team will contact you to review your goals and schedule a short discussion." },
                   { num: "3", title: "Onboarding", desc: "Receive your credentials, project guidelines, and assign a dedicated mentor." },
                 ].map((step, index) => (
-                  <Reveal key={step.num} delay={index * 0.1}>
+                  <Reveal key={step.num} delay={index * 0.15} direction="left">
                     <div className="flex gap-6">
                       <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0 font-heading font-bold text-xl">
                         {step.num}
@@ -184,7 +185,7 @@ export default function Internship() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <Reveal delay={0.2}>
+              <Reveal delay={0.2} direction="right">
                 <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-200">
                   <h3 className="text-2xl font-heading font-bold text-slate-900 mb-8">Apply for Internship</h3>
                   

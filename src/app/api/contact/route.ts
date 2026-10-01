@@ -1,26 +1,16 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export async function POST(request: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const data = await request.json();
     const { name, email, phone, message } = data;
 
-    // Create a transporter using Gmail SMTP
-    // We use environment variables for security
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    // Setup email data
-    const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`, // Sender address (Must be your authenticated email for Gmail)
+    const { data: resendData, error } = await resend.emails.send({
+      from: 'M.B Growth Digital <onboarding@resend.dev>',
+      to: process.env.EMAIL_TO || 'mbgrowthdigital26@gmail.com',
       replyTo: email,
-      to: process.env.EMAIL_USER, // Send to your own email address
       subject: `New Contact Form Lead: ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage:\n${message}`,
       html: `
@@ -36,10 +26,15 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
-    };
+    });
 
-    // Send the email
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error("Error from Resend:", error);
+      return NextResponse.json(
+        { success: false, message: "Failed to send message.", error: error },
+        { status: 500 }
+      );
+    }
 
     console.log("Contact Form Email Sent Successfully for:", name);
 
@@ -47,10 +42,10 @@ export async function POST(request: Request) {
       { success: true, message: "Message sent successfully." },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error sending email:", error);
     return NextResponse.json(
-      { success: false, message: "Failed to send message." },
+      { success: false, message: "Failed to send message.", error: error.message },
       { status: 500 }
     );
   }
